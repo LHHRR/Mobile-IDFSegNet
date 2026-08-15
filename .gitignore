@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Editors and OS metadata
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Patient data and generated predictions
+data/
+outputs/
+
+# Training checkpoints, logs, and model weights
+checkpoints*/
+*.pth
+*.pt
+*.ckpt
+*.pkl
+*.log
+training_log.txt
+weights/*
+!weights/README.md
+!weights/.gitkeep
+
+# Experiment artifacts
+runs/
+wandb/
+tensorboard/
