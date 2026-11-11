@@ -60,25 +60,11 @@ or pass a custom path with `--encoder-checkpoint`.
 
 ## Dataset
 
-PT-3 is distributed separately as a controlled-access dataset:
+PT-3 is a controlled-access multicenter plantar IRT benchmark. It includes 733 main image–mask pairs and 80 external validation pairs.
 
-[LHHRR/Plantar-Thermogram-3-Dataset](https://github.com/LHHRR/Plantar-Thermogram-3-Dataset)
+See [PT-3 Dataset Access](DATA_ACCESS.md) for the email application format. Publications using PT-3 must cite the [dataset paper](DATA_ACCESS.md#citation).
 
-Main PT-3 branch structure:
-
-```text
-Thermal_Image_PT3/
-Thermal_Image_SegmentationMasks_PT3/
-```
-
-External validation branch:
-
-```text
-Validation_Image_PT3/
-Validation_Mask_PT3/
-```
-
-After access is approved, one convenient local layout is:
+After receiving the approved files, one convenient local layout is:
 
 ```text
 Mobile-IDFSegNet/
@@ -86,9 +72,12 @@ Mobile-IDFSegNet/
     +-- PT-3/
         +-- Thermal_Image_PT3/
         +-- Thermal_Image_SegmentationMasks_PT3/
+        +-- External_Validation_PT3/
+            +-- Validation_Image_PT3/
+            +-- Validation_Mask_PT3/
 ```
 
-The `data/` directory is ignored by Git so patient data are not committed with the code.
+The `data/` directory is ignored by Git.
 
 ## Training
 
@@ -135,13 +124,13 @@ python test.py \
   --classes 2
 ```
 
-Evaluate the external validation branch after cloning it locally:
+Evaluate the external validation subset after placing the approved files in the layout shown above:
 
 ```bash
 python test.py \
   --model outputs/checkpoints_dbsd/checkpoint_epoch30_0.97920.pth \
-  --images-dir data/PT-3-validation/Validation_Image_PT3 \
-  --masks-dir data/PT-3-validation/Validation_Mask_PT3 \
+  --images-dir data/PT-3/External_Validation_PT3/Validation_Image_PT3 \
+  --masks-dir data/PT-3/External_Validation_PT3/Validation_Mask_PT3 \
   --classes 2
 ```
 
